@@ -16,6 +16,12 @@ a{
     margin: 0 auto;
     padding: 0 20px;
 }
+.shirt img{
+    width: 180;
+}
+.gown img{
+width: 140;
+}
 
 
 header{

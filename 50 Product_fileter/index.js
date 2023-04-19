@@ -1,5 +1,5 @@
 const btns=document.querySelectorAll('.btn');
-const storeProducts=document.querySelectorAll('.store-products');
+const storeProducts=document.querySelectorAll('.store-product');
 
 for(let i=0;i<btns.length;i++){
     btns[i].addEventListener('click',function(e){
@@ -10,6 +10,40 @@ for(let i=0;i<btns.length;i++){
         // Switch tab content
         const filter = e.target.dataset.filter;
         // console.log(filter);
+        storeProducts.forEach((product)=>{
+            if(filter === "all"){
+                product.style.display="block";
+            }
+            else if(product.classList.contains(filter)){
+                product.style.display="block";
+            }
+            else{
+                product.style.display="none";
+            }
+        })
+    })
+}
 
+// Search Filter
+
+const search=document.getElementById("search");
+const productName=document.querySelectorAll(".product-details h2");
+const noResult =document.querySelector(".no-result");
+
+search.addEventListener("keyup", filterProducts);
+function filterProducts(e){
+    const text = e.target.value.toLowerCase();
+    productName.forEach((product)=>{
+        const item=product.textContent;
+        // item.toLowerCase().indexOf(text)!=-1;
+        if(item.toLowerCase().includes(text)){
+            product.parentElement.parentElement.style.display="block";
+            noResult.style.display="block";
+        }
+        else{
+            product.parentElement.parentElement.style.display="none";
+            noResult.style.display="none";
+        }
+        
     })
 }
