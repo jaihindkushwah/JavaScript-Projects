@@ -1,0 +1,144 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+a{
+    text-decoration: none;
+}
+/* body{
+    padding: 15px;
+} */
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+header{
+    background-color: rgb(166, 165, 165);
+    padding: 1rem;
+}
+
+header h1{
+    font-size: 2.5rem;
+    line-height: 2;
+    color: #8b0479; 
+}
+
+form input{
+    width: 20rem;
+    padding: .7rem;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-size: .9rem;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 1rem;
+}
+.btn{
+    font-size: 1rem;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(255, 132, 0);
+    padding: 5px;
+    border-radius: 5px;
+}
+.active{
+    background-color:#8b0479;
+}
+
+#store-products{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
+    grid-gap: 2rem;
+    /* row-gap: 2rem;
+    column-gap: 2rem; */
+    padding: 2rem 0;
+}
+.store-product{
+    border: 1px solid grey;
+    border-radius: 3px;
+    max-width: 250px;
+    animation: slide-up 05s ease 1;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.product-details {
+    text-align: center;
+    padding-bottom: 1rem;
+    background-color: rgb(207, 202, 202);
+}
+.product-details h2{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.product-details p{
+    font-size: .9rem;
+    color: green;
+    padding-bottom: 1rem;
+    font-weight: 700;
+}
+.product-details p span  {
+    text-decoration: line-through;
+    color: red;
+    font-weight: normal;
+}
+.product-details a {
+    font-size: 1rem;
+    text-decoration: none;
+    background-color:rgb(255, 166, 0);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+}
+.product-details a:hover {
+    background-color: #8f8b8b;
+    color: black;
+}
+
+.no-result{
+    display:none;
+    color: red;
+    padding-bottom: 2rem;
+
+
+}
+.show{
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+@keyframes slide-up {
+    0%{
+        transform: translateY(2rem);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+@media screen and (max-width:660px) {
+    #store-products{
+        grid-template-columns: repeat(auto-fit,minmax(10rem,1fr));
+        padding: 1rem;
+    }
+}
+

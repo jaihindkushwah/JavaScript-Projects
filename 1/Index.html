@@ -1,0 +1,153 @@
+<html>
+    <head>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+            .main{
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: aqua;
+            }
+            .container{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                border-radius: 5%;
+                width: 40vw;
+                height: 80vh;
+                background-color: blue;
+            }
+            .timer{
+                display: flex;
+                font-size: 2rem;
+            }
+            .timer > *,.buttons>*{
+                margin: 10px;
+                background-color: white;
+                padding: 10px;
+                border-radius: 10px;
+            }
+            button{
+                border: none;
+                cursor: pointer;
+                font-size: 1rem;
+                font-weight: 600;
+            }
+            button:hover{
+                background-color: rgb(173, 102, 239);
+            }
+            .stop{
+                color: red;
+            }
+            .reset{
+                color: green;
+            }
+            .activate{
+                background-color: rgb(173, 102, 239);
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="main">
+            <div class="container">
+                <div class="timer">
+                    <div class="hour">00</div>
+                    <div class="minute">00</div>
+                    <div class="sec">00</div>
+                </div>
+                <div class="buttons">
+                    <button class="reset">Reset</button>
+                    <button class="stop">Stop</button>
+                    <button class="start">Start</button>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        // selectors
+        const hours=document.querySelector(".hour");
+        const minutes=document.querySelector(".minute");
+        const sec=document.querySelector(".sec");
+
+        const resetBtn=document.querySelector(".reset");
+        const stopBtn=document.querySelector(".stop");
+        const startBtn=document.querySelector(".start");
+        
+        // Event listener
+        resetBtn.addEventListener('click',resetTimer);
+        stopBtn.addEventListener('click',stopTimer);
+        startBtn.addEventListener('click',startTimer);
+        let time=0;
+        let timeId=null;
+        function timeFormat(){
+            let second=parseInt(time%60);
+            let min=parseInt(time/60);
+            let hour=parseInt(time/3600);
+            formatter(minutes,min%60);
+            formatter(sec,second);
+            formatter(hours,hour%60);
+            // minutes.innerHTML=(min%60);
+            // hours.innerHTML=(hour%60);
+            // sec.innerHTML=second;
+
+        }
+        function formatter(selector,value){
+            if(value<10){
+                selector.innerHTML=`0${value}`;
+            }
+            else{
+                selector.innerHTML=value;
+            }
+        }
+
+
+        function resetTimer(){
+            clearInterval(timeId);
+            hours.innerHTML="00";
+            minutes.innerHTML="00";
+            sec.innerHTML="00";
+            time=0;
+            removeActivateFromButton();
+            resetBtn.classList.add('activate');
+            
+        }
+
+
+        function stopTimer(){
+            clearInterval(timeId);
+            removeActivateFromButton();
+            stopBtn.classList.add('activate');
+            
+        }
+        
+
+        function startTimer(){
+            if(timeId!=null){
+                clearInterval(timeId);
+            }
+            timeId=setInterval(()=>{
+                time=time+1;
+                timeFormat();
+            },1000);
+            removeActivateFromButton();
+            startBtn.classList.add('activate');
+            
+        }
+        function removeActivateFromButton(){
+            const buttons=document.querySelectorAll('button');
+            for(let button of buttons){
+                button.classList.remove('activate');
+            }
+        }
+
+
+    </script>
+</html>
