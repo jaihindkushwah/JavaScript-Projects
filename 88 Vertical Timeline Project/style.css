@@ -1,0 +1,17 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Start Here */
+.intro{
+    background-color: rgb(74, 73, 73);
+    color: white;
+    padding: 2rem;
+}
